@@ -85,26 +85,28 @@ let textColor = textColorElement.value;
 let file;
 
 function setStyles() {
-  const settingFormat = localStorage.getItem("format");
+  const settingFormat = localStorage.getItem("length-format");
   const settingTextPositionElement = localStorage.getItem(
-    "textPositionElement"
+    "length-textPosition"
   );
   const settingTextPositionAdjustmentElement = localStorage.getItem(
-    "textPositionAdjustmentElement"
+    "length-textPositionAdjustment"
   );
-  const settingFontSize = localStorage.getItem("font-size-input");
-  const settingPointer = localStorage.getItem("pointer");
-  const settingLine = localStorage.getItem("line");
-  const settingLineOpacity = localStorage.getItem("line-opacity");
-  const settingLineWidth = localStorage.getItem("line-width");
-  const settingLineColor = localStorage.getItem("line-color");
-  const settingCardColor = localStorage.getItem("card-color");
-  const settingTextColor = localStorage.getItem("text-color");
-  const settingLinesOnly = localStorage.getItem("lines-only");
-  const settingAngleConstraint = localStorage.getItem("angle-constraint");
-  const settingLength = localStorage.getItem("length");
-  const settingQuaternary = localStorage.getItem("quaternary");
-  const settingAngle = localStorage.getItem("angle");
+  const settingFontSize = localStorage.getItem("length-font-size-input");
+  const settingPointer = localStorage.getItem("length-pointer");
+  const settingLine = localStorage.getItem("length-line");
+  const settingLineOpacity = localStorage.getItem("length-line-opacity");
+  const settingLineWidth = localStorage.getItem("length-line-width");
+  const settingLineColor = localStorage.getItem("length-line-color");
+  const settingCardColor = localStorage.getItem("length-card-color");
+  const settingTextColor = localStorage.getItem("length-text-color");
+  const settingLinesOnly = localStorage.getItem("length-lines-only");
+  const settingAngleConstraint = localStorage.getItem(
+    "length-angle-constraint"
+  );
+  const settingLength = localStorage.getItem("length-length");
+  const settingQuaternary = localStorage.getItem("length-quaternary");
+  const settingAngle = localStorage.getItem("length-angle");
 
   setValueToSelected(format, settingFormat);
   setValueToSelected(textPositionElement, settingTextPositionElement);
@@ -116,17 +118,17 @@ function setStyles() {
   changeFontSize(ctx, fontInput.value);
   setValueToChecked(pointerElement, settingPointer);
   setValueToChecked(lineElement, settingLine);
-  if (localStorage.getItem("line-color") === null) {
+  if (localStorage.getItem("length-line-color") === null) {
     lineColorElement.value = "#ffffff";
   } else {
     lineColorElement.value = settingLineColor;
   }
-  if (localStorage.getItem("card-color") === null) {
+  if (localStorage.getItem("length-card-color") === null) {
     cardColorElement.value = "#ffffff";
   } else {
     cardColorElement.value = settingCardColor;
   }
-  if (localStorage.getItem("text-color") === null) {
+  if (localStorage.getItem("length-text-color") === null) {
     textColorElement.value = "#000000";
   } else {
     textColorElement.value = settingTextColor;
@@ -151,6 +153,7 @@ function setValueToChecked(element, value) {
   }
   element.checked = true;
 }
+
 function setValueToSelected(element, value) {
   if (!value) return;
   for (const option of element.options) {
@@ -982,31 +985,40 @@ fileButton.addEventListener("click", function () {
   }
 });
 format.addEventListener("change", function (event) {
-  localStorage.setItem(`${format.name}`, format.selectedOptions[0].value);
+  localStorage.setItem(
+    `length-${format.name}`,
+    format.selectedOptions[0].value
+  );
   // format.blur();
 });
 zoomElement.addEventListener("change", function (event) {
-  // localStorage.setItem(`${zoom.name}`, zoomElement.selectedOptions[0].value);
+  // localStorage.setItem(`length-${zoom.name}`, zoomElement.selectedOptions[0].value);
   zoom();
 });
 lineOpacityElement.addEventListener("change", function (event) {
   localStorage.setItem(
-    `${lineOpacityElement.name}`,
+    `length-${lineOpacityElement.name}`,
     lineOpacityElement.selectedOptions[0].value
   );
 });
 lineWidthElement.addEventListener("change", function (event) {
   localStorage.setItem(
-    `${lineWidthElement.name}`,
+    `length-${lineWidthElement.name}`,
     lineWidthElement.selectedOptions[0].value
   );
 });
 fontInput.addEventListener("change", function (event) {
-  localStorage.setItem(`${fontInput.name}`, fontInput.selectedOptions[0].value);
+  localStorage.setItem(
+    `length-${fontInput.name}`,
+    fontInput.selectedOptions[0].value
+  );
 });
 lineColorElement.addEventListener("change", function (event) {
   lineColor = this.value;
-  localStorage.setItem(`${lineColorElement.name}`, lineColorElement.value);
+  localStorage.setItem(
+    `length-${lineColorElement.name}`,
+    lineColorElement.value
+  );
 });
 lineColorBtn.addEventListener("click", function (event) {
   lineColorElement.click();
@@ -1017,7 +1029,10 @@ lineColorBtn.addEventListener("keydown", function (event) {
 cardColorElement.addEventListener("change", function (event) {
   cardColor = this.value;
   drawImage();
-  localStorage.setItem(`${cardColorElement.name}`, cardColorElement.value);
+  localStorage.setItem(
+    `length-${cardColorElement.name}`,
+    cardColorElement.value
+  );
 });
 cardColorBtn.addEventListener("click", function (event) {
   cardColorElement.click();
@@ -1028,7 +1043,10 @@ cardColorBtn.addEventListener("keydown", function (event) {
 textColorElement.addEventListener("change", function (event) {
   textColor = this.value;
   drawImage();
-  localStorage.setItem(`${textColorElement.name}`, textColorElement.value);
+  localStorage.setItem(
+    `length-${textColorElement.name}`,
+    textColorElement.value
+  );
 });
 textColorBtn.addEventListener("click", function (event) {
   textColorElement.click();
@@ -1044,13 +1062,13 @@ clear.addEventListener("click", function () {
 });
 textPositionElement.addEventListener("change", function () {
   localStorage.setItem(
-    `${textPositionElement.name}`,
+    `length-${textPositionElement.name}`,
     textPositionElement.selectedOptions[0].value
   );
 });
 textPositionAdjustmentElement.addEventListener("change", function () {
   localStorage.setItem(
-    `${textPositionAdjustmentElement.name}`,
+    `length-${textPositionAdjustmentElement.name}`,
     textPositionAdjustmentElement.selectedOptions[0].value
   );
 });
@@ -1084,31 +1102,34 @@ function navToggle() {
 
 function changeCheckedLength() {
   lengthElement.checked = !lengthElement.checked;
-  localStorage.setItem(`length`, length.checked);
+  localStorage.setItem(`length-length`, lengthElement.checked);
 }
 function changeCheckedAngle() {
   angleElement.checked = !angleElement.checked;
-  localStorage.setItem(`angle`, angle.checked);
+  localStorage.setItem(`length-angle`, angleElement.checked);
 }
 function changeCheckedPointer() {
   pointerElement.checked = !pointerElement.checked;
-  localStorage.setItem(`pointer`, pointer.checked);
+  localStorage.setItem(`length-pointer`, pointerElement.checked);
 }
 function changeCheckedLine() {
   lineElement.checked = !lineElement.checked;
-  localStorage.setItem(`line`, line.checked);
+  localStorage.setItem(`length-line`, lineElement.checked);
 }
 function changeCheckedLinesOnly() {
   linesOnlyElement.checked = !linesOnlyElement.checked;
-  localStorage.setItem(`lines-only`, linesOnlyElement.checked);
+  localStorage.setItem(`length-lines-only`, linesOnlyElement.checked);
 }
 function changeCheckedAngleConstraint() {
   angleConstraintElement.checked = !angleConstraintElement.checked;
-  localStorage.setItem(`angle-constraint`, angleConstraintElement.checked);
+  localStorage.setItem(
+    `length-angle-constraint`,
+    angleConstraintElement.checked
+  );
 }
 function changeCheckedQuaternary() {
   quaternaryElement.checked = !quaternaryElement.checked;
-  localStorage.setItem(`quaternary`, quaternaryElement.checked);
+  localStorage.setItem(`length-quaternary`, quaternaryElement.checked);
   drawImage();
 }
 
@@ -1217,10 +1238,16 @@ function changeSelectedElement(element) {
   const selectedIndex = element.selectedIndex;
   if (selectedIndex + 1 === element.options.length) {
     element.options[0].selected = true;
-    localStorage.setItem(`${element.name}`, element.selectedOptions[0].value);
+    localStorage.setItem(
+      `length-${element.name}`,
+      element.selectedOptions[0].value
+    );
   } else {
     element.options[selectedIndex + 1].selected = true;
-    localStorage.setItem(`${element.name}`, element.selectedOptions[0].value);
+    localStorage.setItem(
+      `length-${element.name}`,
+      element.selectedOptions[0].value
+    );
   }
 }
 
