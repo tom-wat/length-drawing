@@ -293,7 +293,7 @@ function updateUndoStates() {
 
 function clearCanvas() {
   if (!initialState) return;
-  if (initialState === undoStates[0]) return;
+  if (lines[lines.length - 1].length === 0) return;
   lines = [];
   checkedPoints = [];
   updateUndoStates();
