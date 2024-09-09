@@ -52,9 +52,6 @@ const textPositionAdjustmentElement = document.getElementById(
 const ratioLeft = document.getElementById("ratio-left");
 const ratioRight = document.getElementById("ratio-right");
 const isMobile = navigator.userAgent.match(/(iPhone|iPod|Android|BlackBerry)/);
-const isTablet = navigator.userAgent.match(
-  /iPad|Android.*Tablet|Kindle|Playbook/
-);
 const overlay = document.getElementById("overlay");
 // const undoStatesLimitNumber = 50;
 
@@ -179,8 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Array.from(pc).forEach((element) => (element.style.display = "none"));
   }
   setStyles();
-  if (!!isMobile === false && !!isTablet === false) {
-  }
+
   if (!!isMobile === true) {
     setTimeout(() => {
       backdrop.style.display = "none";
