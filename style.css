@@ -143,6 +143,8 @@ select:focus-visible {
   place-items: start;
 }
 .title {
+  max-width: 100%;
+  width: 360px;
   grid-area: title;
 }
 
