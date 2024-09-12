@@ -470,7 +470,6 @@
               id="line-color-btn"
               class="button flex-center"
               data-tabindex
-              onclick=""
             >
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -483,7 +482,11 @@
               <span class="row-1">Line Color</span>
 
               <form class="flex">
-                <label for="line-color">
+                <label
+                  id="line-color-form"
+                  for="line-color"
+                  aria-labelledby="line-color-btn"
+                >
                   <input
                     type="color"
                     id="line-color"
