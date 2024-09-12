@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const tabbableElements = document.querySelectorAll("[data-tabindex]");
 
   tabbableElements.forEach(function (element, index) {
-    element.setAttribute("tabindex", index + 1);
+    element.setAttribute("tabindex", 0);
   });
   if (!!isMobile === true) {
     menu.classList.toggle("close");
