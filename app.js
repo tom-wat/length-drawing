@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const openFile = (event) => {
   file = event.target.files[0];
   if (!file) {
-    console.error("No file selected.");
+    // console.error("No file selected.");
     return;
   }
   main.style.display = "none";
